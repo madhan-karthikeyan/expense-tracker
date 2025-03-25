@@ -1,17 +1,32 @@
 const express = require("express");
 const Expense = require("../models/Expense");
-
+const predictCategory = require("../ml/predict"); // Import AI function
 const router = express.Router();
 
 // CREATE an Expense
 router.post("/add", async (req, res) => {
   try {
-    const { title, amount, category } = req.body;
-    const newExpense = new Expense({ title, amount, category });
-    await newExpense.save();
-    res.status(201).json(newExpense);
+      const { title, amount, subcategory, note, hour, dayofweek, payment_mode } = req.body;
+
+      // Predict category using AI model
+      const category = await predictCategory(subcategory, note, amount, hour, dayofweek, payment_mode);
+
+      // Create new expense
+      const newExpense = new Expense({
+          title,
+          amount,
+          category, // AI-generated category
+          subcategory,
+          note,
+          hour,
+          dayofweek,
+          payment_mode,
+      });
+
+      await newExpense.save();
+      res.status(201).json(newExpense);
   } catch (error) {
-    res.status(500).json({ error: "Failed to add expense" });
+      res.status(500).json({ message: "Error adding expense", error });
   }
 });
 

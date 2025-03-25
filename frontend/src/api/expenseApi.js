@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_BASE_URL = "http://localhost:5000/api/expenses";
+const PREDICT_API_URL = "http://localhost:5000/api/predict";
 
 // FETCH
 export const getExpenses = async () => {
@@ -15,7 +16,6 @@ export const getExpenses = async () => {
         } else {
             throw new Error("Response is not in JSON format");
         }
-
     } catch (error) {
         console.error("Error fetching expenses: ", error);
         return [];
@@ -33,15 +33,25 @@ export const addExpense = async (expense) => {
     }
 };
 
+// PREDICT CATEGORY (NEW)
+export const predictCategory = async (expenseData) => {
+    try {
+        const response = await axios.post(PREDICT_API_URL, expenseData);
+        return response.data.category;  // Assuming the response contains { category: "predicted_category" }
+    } catch (error) {
+        console.error("Error predicting category: ", error);
+        return "";
+    }
+};
+
 // UPDATE
 export const updateExpense = async (expense) => {
     try {
-        const response = await axios.put(`${API_BASE_URL}/${id}`, updateExpense);
+        const response = await axios.put(`${API_BASE_URL}/${expense.id}`, expense);
         return response.data;
     } catch (error) {
-        console.error("Error deleting expense: ", error);
+        console.error("Error updating expense: ", error);
     }
-    
 };
 
 // DELETE
@@ -52,3 +62,4 @@ export const deleteExpense = async (id) => {
         console.error("Error deleting expense: ", error);
     }
 };
+    
