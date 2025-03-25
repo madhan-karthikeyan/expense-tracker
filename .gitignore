@@ -1,0 +1,9 @@
+node_modules
+.idea
+.venv
+backend/ml/venv
+backend/ml/___pycache__
+backend/ml/.gradio
+backend/ml/logs
+backend/ml/tf
+backend/ml/.pkl
