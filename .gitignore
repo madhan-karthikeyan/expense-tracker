@@ -7,3 +7,6 @@ backend/ml/.gradio
 backend/ml/logs
 backend/ml/tf
 backend/ml/.pkl
+backend/ml/label_encoders.pkl
+backend/ml/random_forest_model.pkl
+backend/ml/scaler.pkl
