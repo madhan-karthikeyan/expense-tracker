@@ -103,10 +103,6 @@ python app.py
 
 ---
 
-## Screenshots (Add yours here)
-
-> _Placeholder for UI images_
-
 ---
 
 ## License
