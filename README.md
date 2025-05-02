@@ -20,16 +20,15 @@ A full-stack expense tracking web application built with the **MERN** stack, fea
 
 ### Frontend
 - React.js
-- Tailwind CSS / Bootstrap (if used)
+- Tailwind CSS
 - Axios
 - React Router
 
 ### Backend
 - Node.js
 - Express.js
-- MongoDB (via Mongoose)
-- JWT for Authentication
-- Python (Random Forest Model via Flask or FastAPI)
+- MongoDB
+- Python (Random Forest Model)
 
 ---
 
@@ -40,12 +39,11 @@ smart-expense-tracker/
 ├── backend/         # Node.js + Express API
 │   ├── server.js
 │   └── routes/, models/, controllers/, etc.
+│   └── ml-model/        # Python folder for the ML model (if separate)
+│   └── model.pkl
 ├── frontend/        # React frontend
-│   ├── src/
-│   └── package.json
-└── ml-model/        # Python folder for the ML model (if separate)
-    ├── model.pkl
-    └── app.py (Flask/FastAPI)
+    ├── src/
+    └── package.json
 ```
 
 ---
@@ -55,8 +53,8 @@ smart-expense-tracker/
 ### Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/smart-expense-tracker.git
-cd smart-expense-tracker
+git clone https://github.com/madhan-karthikeyan/expense-tracker.git
+cd expense-tracker
 ```
 
 ### Start the Backend
